@@ -21,6 +21,12 @@ class PostController extends Controller{
     }
 
     // 作成機能
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function store(Request $request) {
       $post = new Post();
       $post->title = $request->input('title');
@@ -41,11 +47,31 @@ class PostController extends Controller{
     }
 
     // 更新機能
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @param Post $post
+     * @return void
+     */
     public function update(Request $request, Post $post) {
       $post->title = $request->input('title');
       $post->content = $request->input('content');
       $post->save();
 
       return redirect()->route('posts.show', $post)->with('flash_message', '投稿を編集しました。');
+    }
+
+    // 削除機能
+    /**
+     * Undocumented function
+     *
+     * @param Post $post
+     * @return void
+     */
+    public function destroy(Post $post) {
+      $post->delete();
+
+      return redirect()->route('posts.index')->with('flash_message', '投稿を削除しました。');
     }
 }

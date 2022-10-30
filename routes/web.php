@@ -15,10 +15,9 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PostController::class, 'index']);
 
+/*
 // 投稿の一覧ページ
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
@@ -34,5 +33,22 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')
 // 投稿の更新ページ
 Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 
-// 投稿の詳細機能
+// 投稿の更新機能
 Route::patch('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+
+// 投稿の削除機能
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+*/
+
+// 一括設定 確認：php artisan route:list
+/*
+HTTPリクエストメソッド	URL	 アクション	ルート名
+GET	    /posts	              index	    posts.index
+GET	    /posts/create	        create	  posts.create
+POST	  /posts	            store	    posts.store
+GET	    /posts/{post}	        show	    posts.show
+GET	    /posts/{post}/edit	  edit	    posts.edit
+PUT     / PATCH	/posts/{post}	update	  posts.update
+DELETE	/posts/{post}	    destroy	  posts.destroy
+*/
+Route::resource('posts', PostController::class);
