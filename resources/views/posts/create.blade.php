@@ -12,7 +12,9 @@
   <!-- header -->
   <header>
     <nav>
-      <a href="{{ route('posts.index') }}">投稿アプリ</a>
+      <div>
+        <a href="{{ route('posts.index') }}">投稿アプリ</a>
+      </div>
     </nav>
   </header>
 

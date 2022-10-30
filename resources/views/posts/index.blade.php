@@ -8,11 +8,13 @@
   <title>投稿一覧</title>
 </head>
 
-<body class>
+<body>
   <!-- header -->
   <header>
     <nav>
-      <a href="{{ route('posts.index') }}">投稿アプリ</a>
+      <div>
+        <a href="{{ route('posts.index') }}">投稿アプリ</a>
+      </div>
     </nav>
   </header>
 
@@ -28,6 +30,19 @@
         <div>
           <a href="{{ route('posts.create') }}">新規投稿</a>
         </div>
+
+        @foreach($posts as $post)
+          <div>
+            <div>
+              <h2>{{ $post->title }}</h2>
+              <p>{{ $post->content }}</p>
+              <div>
+                <a href="{{ route('posts.show', $post) }}">詳細</a>
+              </div>
+            </div>
+
+          </div>
+        @endforeach
     </article>
   </main>
 
